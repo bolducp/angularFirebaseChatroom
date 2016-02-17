@@ -24,8 +24,7 @@ app.controller('navCtrl', function($scope, $state, Auth, fbAuth) {
   };
 });
 
-
-app.controller('profileCtrl', function($scope, fbAuth, Profile, firebaseRef, $firebaseObject) {
+app.controller('profileCtrl', function($scope, fbAuth, Profile) {
   $scope.userInfo = fbAuth.$getAuth();
   $scope.profile = Profile($scope.userInfo.uid);
   $scope.email = $scope.userInfo.password.email;
@@ -47,13 +46,7 @@ app.controller('profileCtrl', function($scope, fbAuth, Profile, firebaseRef, $fi
   $scope.cancelEdits = function() {
     $scope.editing = false;
   }
-
-  console.log("Profile Ctrl auth data", $scope.userInfo);
-
-
 });
-
-
 
 
 app.controller('userCtrl', function($scope, $state, Auth) {
@@ -90,4 +83,30 @@ app.controller('userCtrl', function($scope, $state, Auth) {
       console.log(err);
     };
   };
+});
+
+
+app.controller('chatCtrl', function($scope, fbAuth, Profile, Chat, $state) {
+  $scope.state = $state.current.name.split('.')[1];
+  $scope.userInfo = fbAuth.$getAuth();
+  $scope.profile = Profile($scope.userInfo.uid);
+  $scope.messages = Chat;
+
+  $scope.addMessageEnter = function(e) {
+    if (e.keyCode != 13) return;
+    addMessage();
+  }
+
+  $scope.addMessageClick = function() {
+    addMessage();
+  }
+
+  function addMessage(){
+    $scope.messages.$add({
+      from: $scope.profile.handle || $scope.profile.email,
+      body: $scope.message,
+      createdAt: Date()
+    });
+    $scope.message = "";
+  }
 });

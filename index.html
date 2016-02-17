@@ -10,6 +10,8 @@
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/firebase/firebase.js"></script>
   <script src="/bower_components/angularfire/dist/angularfire.min.js"></script>
+  <script src="/bower_components/moment/min/moment.min.js"></script>
+  <script src="/bower_components/angular-moment/angular-moment.min.js"></script>
   <script src="/js/module.js"></script>
   <script src="/js/controllers.js"></script>
   <script src="/js/services.js"></script>
@@ -29,8 +31,10 @@
           <button ng-disabled="!authData" ui-sref="user.profile">Profile</button>
           <button ng-click='logout()'>Logout</button>
         </span>
+        <br>
+        <br>
+        <button ng-hide='state === "chat"' ng-show="authData" class="btn btn-info" ng-disabled="!authData" ui-sref="user.chat">Enter Chatroom</button>
       </div>
-
       <ui-view></ui-view>
     </div>
   </div>

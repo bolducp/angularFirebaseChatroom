@@ -15,3 +15,24 @@ div.transbox {
     filter: alpha(opacity=60); /* For IE8 and earlier */
     font-weight: bold;
 }
+
+#chatBox {
+  color: black;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px 50px;
+  overflow-y: scroll;
+  max-height: 400px;
+}
+
+#addComment {
+  margin-left: 40px;
+}
+
+.postInfo {
+  margin: 0px;
+}
+
+.time {
+  margin: 0px 0px 14px 0px;
+}

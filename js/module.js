@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('fireApp', ['firebase', 'ui.router']); // firebase here is the angularfire module
+var app = angular.module('fireApp', ['firebase', 'ui.router', 'angularMoment']); // firebase here is the angularfire module
 
 app.constant("firebaseUrl", 'https://brilliant-torch-9578.firebaseio.com/');
 
@@ -31,14 +31,21 @@ app.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: '/html/profile.html',
       controller: 'profileCtrl',
       onEnter: function(fbAuth, $state) {
-        console.log("FB AUTH", fbAuth.$getAuth());
         if(!fbAuth.$getAuth()){
-          console.log("!!!!");
           $state.go('home');
         }
       }
     })
-
+    .state('user.chat', {
+      url: '/chat',
+      templateUrl: '/html/chat.html',
+      controller: 'chatCtrl',
+      onEnter: function(fbAuth, $state) {
+        if(!fbAuth.$getAuth()){
+          $state.go('home');
+        }
+      }
+    })
 
   $urlRouterProvider.otherwise('/');
 });

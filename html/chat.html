@@ -1,0 +1,16 @@
+<h1>CHATROOM</h1>
+
+  <div id="chatBox">
+    <div ng-repeat="message in messages">
+      <h4 class="postInfo">
+        <em>{{ message.from }}</em> : {{ message.body }}
+      </h4>
+      <h5 class="time">
+        <span am-time-ago="message.createdAt"></span>
+      </h5>
+    </div>
+  </div>
+<div id="addComment">
+  <input type="text" ng-model="message" ng-keydown="addMessageEnter($event)" placeholder="Message...">
+  <button ng-click="addMessageClick()">Send</button>
+</div>

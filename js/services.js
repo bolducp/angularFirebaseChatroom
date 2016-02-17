@@ -2,13 +2,15 @@
 
 var app = angular.module('fireApp');
 
+
 app.factory('firebaseRef', function($window, firebaseUrl) {
   return new $window.Firebase(firebaseUrl);
 });
 
-app.factory('List', function(firebaseRef, $firebaseArray) {
-  var listRef = firebaseRef.child('list');
-  return $firebaseArray(listRef);
+
+app.factory('Chat', function(firebaseRef, $firebaseArray) {
+  var chatRef = firebaseRef.child('chat');
+  return $firebaseArray(chatRef);
 });
 
 
@@ -16,6 +18,7 @@ app.factory('User', function(firebaseRef, $firebaseObject) {
   var userRef = firebaseRef.child('userRef');
   return $firebaseObject(userRef);
 });
+
 
 app.factory('Profile', function(firebaseRef, $firebaseObject) {
   return function(uid) {
@@ -27,14 +30,6 @@ app.factory('Profile', function(firebaseRef, $firebaseObject) {
 
 app.factory('fbAuth', function(firebaseRef, $firebaseAuth) {
   return $firebaseAuth(firebaseRef);
-});
-
-
-app.factory('MakeList', function(firebaseRef, $firebaseArray) {
-  return function(child) {
-    var listRef = firebaseRef.child(child);
-    return $firebaseArray(listRef);
-  }
 });
 
 
