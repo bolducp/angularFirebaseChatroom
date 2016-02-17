@@ -9,7 +9,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: '/html/home.html'
+      templateUrl: 'html/home.html'
     })
     .state('user', {
       url: '/user',
@@ -18,17 +18,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('user.login', {
       url: '/login',
-      templateUrl: '/html/user.html',
+      templateUrl: 'html/user.html',
       controller: 'userCtrl'
     })
     .state('user.register', {
       url: '/register',
-      templateUrl: '/html/user.html',
+      templateUrl: 'html/user.html',
       controller: 'userCtrl'
     })
     .state('user.profile', {
       url: '/profile',
-      templateUrl: '/html/profile.html',
+      templateUrl: 'html/profile.html',
       controller: 'profileCtrl',
       onEnter: function(fbAuth, $state) {
         if(!fbAuth.$getAuth()){
@@ -38,7 +38,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('user.chat', {
       url: '/chat',
-      templateUrl: '/html/chat.html',
+      templateUrl: 'html/chat.html',
       controller: 'chatCtrl',
       onEnter: function(fbAuth, $state) {
         if(!fbAuth.$getAuth()){
