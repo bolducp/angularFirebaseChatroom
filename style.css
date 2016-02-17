@@ -1,0 +1,17 @@
+body {
+  background: url(https://images.unsplash.com/photo-1455657005292-2a96ab8c61c7?crop=entropy&fit=crop&fm=jpg&h=900&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1700) no-repeat;
+  background-size: cover;
+  color: #ffaa00;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+div.transbox {
+    margin: 30px;
+    padding: 20px 20px 100px 20px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.95;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+    font-weight: bold;
+}

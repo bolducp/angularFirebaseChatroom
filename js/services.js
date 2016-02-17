@@ -11,14 +11,17 @@ app.factory('List', function(firebaseRef, $firebaseArray) {
   return $firebaseArray(listRef);
 });
 
+
 app.factory('User', function(firebaseRef, $firebaseObject) {
   var userRef = firebaseRef.child('userRef');
   return $firebaseObject(userRef);
 });
 
-app.factory('User', function(firebaseRef, $firebaseObject) {
-  var userRef = firebaseRef.child('userRef');
-  return $firebaseObject(userRef);
+app.factory('Profile', function(firebaseRef, $firebaseObject) {
+  return function(uid) {
+    var ref = firebaseRef.child('profiles').child(uid);
+    return $firebaseObject(ref);
+  }
 });
 
 
@@ -43,7 +46,6 @@ app.service('Auth', function(fbAuth) {
   this.register = function(userObj) {
     return fbAuth.$createUser(userObj)
     .then(userData => {
-      console.log("USER " + userData.uid + " created successfully");
       return fbAuth.$authWithPassword(userObj);
     });
   };

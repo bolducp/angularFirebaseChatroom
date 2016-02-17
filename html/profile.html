@@ -1,1 +1,20 @@
 <h1>PROFILE</h1>
+
+<h3>User Handle: {{ profile.handle }}</h3>
+<h3>Email: {{ profile.email }}</h3>
+<h3>Name: {{ profile.name }}</h3>
+<div ng-if="imageUrl">
+  <img src="{{imageUrl}}" alt="">
+</div>
+<button ng-click="openEdit()" ng-hide="editing">Edit Profile</button>
+
+<div ng-show="editing">
+  <label for="">Name:</label>
+  <input type="text" ng-model="newName">
+  <label for="">Handle:</label>
+  <input type="text" ng-model="newHandle">
+  <label for="">Image Url:</label>
+  <input type="text" ng-model="newImage">
+  <button ng-click="makeEdits()">Make Changes</button>
+  <button ng-click="cancelEdits()">Cancel</button>
+</div>

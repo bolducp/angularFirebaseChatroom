@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Angular Fire</title>
-
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="/style.css">
   <script src="/bower_components/angular/angular.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/bower_components/firebase/firebase.js"></script>
@@ -13,23 +15,24 @@
   <script src="/js/services.js"></script>
 </head>
 <body ng-app="fireApp">
-  <h1>Angular FIRE</h1>
-  <div ng-controller="navCtrl">
-    <button ui-sref='home'>Home</button>
-    <span ng-hide="authData">
-      <button ui-sref='user.login'>Login</button>
-      <button ui-sref='user.register'>Register</button>
-    </span>
-    <span ng-show="authData">
-      Welcome {{ authData.password.email }}!
-      <button ng-disabled="!authData" ui-sref="user.profile">Profile</button>
-      <button ng-click='logout()'>Logout</button>
-    </span>
+
+  <div class="container">
+    <div class="transbox">
+      <div ng-controller="navCtrl">
+        <button ui-sref='home'>Home</button>
+        <span ng-hide="authData">
+          <button ui-sref='user.login'>Login</button>
+          <button ui-sref='user.register'>Register</button>
+        </span>
+        <span ng-show="authData">
+          Welcome {{ authData.password.email }}!
+          <button ng-disabled="!authData" ui-sref="user.profile">Profile</button>
+          <button ng-click='logout()'>Logout</button>
+        </span>
+      </div>
+
+      <ui-view></ui-view>
+    </div>
   </div>
-
-
-
-  <ui-view></ui-view>
-
 </body>
 </html>
