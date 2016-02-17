@@ -1,0 +1,7 @@
+<h1>LOGIN html view</h1>
+
+<label for="">Email:</label>
+<input type="text" ng-model="user.email">
+<label for="">Password:</label>
+<input type="password" ng-model="user.password">
+<button ng-click="submit(user)">{{ state | titlecase }}</button>
